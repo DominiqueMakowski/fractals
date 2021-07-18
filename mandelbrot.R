@@ -25,6 +25,7 @@ mandelbrot <- function (xlim = c(-2, 2), ylim = c(-2, 2), resolution = 100, thre
 
     data$z <- data$z^2 + data$c
   }
+  data$z <- NULL
   data
 }
 
