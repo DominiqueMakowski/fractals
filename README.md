@@ -1,2 +1,7 @@
-# fractals
-Fractal stuff
+
+# Fractals
+
+``` r
+library(ggplot2)
+library(dplyr)
+```
