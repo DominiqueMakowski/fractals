@@ -24,14 +24,16 @@ knitr::opts_chunk$set(
 
 Fractal stuff.
 
-## Using R
+## Using base R
 
 **TO DO:**
-- Optimize
+
+- [ ] Optimize
 
 **HELP NEEDED:**
-- How to paralelize
-- How to animate
+
+- [ ] How to paralelize
+- [ ] How to animate
 
 ### Basic 
 
@@ -48,7 +50,7 @@ data <- mandelbrot(resolution = 500, iterations = 50)
 cols <- see::palette_material(palette = "rainbow")(50)
 cols <- mandelbrot::mandelbrot_palette(cols,
                                        fold = TRUE, 
-                                       in_set = "white")
+                                       in_set = "black")
 
 # Plot
 ggplot(data, aes(x = x, y = y, fill = n)) +
