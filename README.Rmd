@@ -12,6 +12,8 @@ editor_options:
 knitr::opts_chunk$set(
   collapse = TRUE,
   dpi = 450,
+  fig.width = 10,
+  fig.height = 10,
   fig.path = "img/"
 )
 ```
@@ -22,46 +24,35 @@ knitr::opts_chunk$set(
 
 Fractal stuff.
 
+## Using R
+
+**TO DO:**
+- Optimize
+
+**HELP NEEDED:**
+- How to paralelize
+- How to animate
+
+### Basic 
 
 ```{r, warning=FALSE, message=FALSE}
 library(ggplot2)
-library(dplyr)
-
-
-
 library(mandelbrot)
-library(ggplot2)
 
-data <- mandelbrot::mandelbrot0(resolution = 10)
+# Download function
+source("https://raw.githubusercontent.com/DominiqueMakowski/fractals/main/mandelbrot.R")
 
+data <- mandelbrot(resolution = 500, iterations = 50)
 
+# Colors
+cols <- see::palette_material(palette = "rainbow")(50)
+cols <- mandelbrot::mandelbrot_palette(cols,
+                                       fold = TRUE, 
+                                       in_set = "white")
 
-
-
-
-# Home made ---------------------------------------------------------------
-# 
-# library(doParallel)
-# library(itertools)
-# 
-# 
-# 
-# 
-# # Check against reference
-# rez <- mandelbrot(data)
-# ref <- mandelbrot::mandelbrot0(resolution = 10, iterations = 10)
-# merge(ref, rez[c("x", "y", "n")])
-# 
-# 
-# 
-# # Plot
-# cols <- mandelbrot::mandelbrot_palette(RColorBrewer::brewer.pal(11, "Spectral"),
-#                                        fold = FALSE)
-# rez <- mandelbrot(data)
-# ggplot(rez, aes(x = x, y = y, fill = n)) +
-#   geom_raster(interpolate = TRUE) +
-#   theme_void() +
-#   scale_fill_gradientn(colours = cols, guide = "none")
-
-
+# Plot
+ggplot(data, aes(x = x, y = y, fill = n)) +
+  geom_raster(interpolate = TRUE) +
+  theme_void() +
+  scale_fill_gradientn(colours = cols, guide = "none")
 ```

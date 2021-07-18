@@ -1,4 +1,7 @@
-# compute
+# Mandelbrot Set Function in base R
+
+# TODO: How to paralelize?
+
 mandelbrot <- function (xlim = c(-2, 2), ylim = c(-2, 2), resolution = 100, threshold = 4, iterations = 10) {
 
   # Function
@@ -25,20 +28,8 @@ mandelbrot <- function (xlim = c(-2, 2), ylim = c(-2, 2), resolution = 100, thre
   data
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Check against reference
+# rez <- mandelbrot(data, resolution = 10, iterations = 10)
+# ref <- mandelbrot::mandelbrot0(resolution = 10, iterations = 10)
+# merge(ref, rez[c("x", "y", "n")])
+# ref  # Some discrepancies, not sure why
